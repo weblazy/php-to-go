@@ -7,7 +7,9 @@ type (' . "\n";
 foreach ($arr as $key => $value) {
     $content = $content . ucfirst($key) . "Request" . " struct {\n";
     foreach ($value as $field => $value2) {
-        $content = $content . ucfirst($field) . " string `json:\"$field\"`\n";
+        if ($field != "verify") {
+            $content = $content . ucfirst($field) . " string `json:\"$field\"`\n";
+        }
     }
     $content = $content . "}\n";
     $content = $content . ucfirst($key) . "Response" . " struct {\n";
